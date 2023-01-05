@@ -5,12 +5,13 @@ import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { LoggedInGuard } from "./LoggedInGuard";
 import { HomePage } from "./components/HomePage";
 import { LoginRedirectPage } from "./components/LoginRedirectPage";
+import { observer } from "mobx-react";
 
 const rootStore = new RootStore();
 
-function App() {
+export const App = observer(() => {
   return <div className="App">{getComponentFromPath()}</div>;
-}
+});
 
 const getComponentFromPath = () => {
   return (
