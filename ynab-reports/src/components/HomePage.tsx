@@ -19,7 +19,7 @@ export const HomePage = observer(({ rootStore }: IProps) => {
         text={"Fetch User Info"}
         onClick={() => rootStore.userStore.fetchUser()}
       />
-      <div>{rootStore.userStore.user?.id}</div>
+      <div>User ID: {rootStore.userStore.user?.id}</div>
     </div>
   );
 });

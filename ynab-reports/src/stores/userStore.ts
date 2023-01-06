@@ -1,4 +1,5 @@
 import { action, observable } from "mobx";
+import { IUser } from "../models/user";
 import { makeGetRequest } from "../utils/httpUtils";
 
 export class UserStore {
@@ -11,13 +12,12 @@ export class UserStore {
   @action async fetchUser() {
     this.isLoading = true;
     try {
-      const response: any = await makeGetRequest<any>("user");
-      this.user = response.data.data.user;
+      const response: IUser = await makeGetRequest<IUser>("user");
+      this.user = response;
     } catch (error: any) {
       this.errorMessage = error;
     } finally {
       this.isLoading = false;
-      console.log("Fetched User: " + JSON.stringify(this.user));
     }
   }
 }
