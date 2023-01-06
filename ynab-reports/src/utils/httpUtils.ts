@@ -8,10 +8,8 @@ const getConfig = () => {
 };
 
 export const makeGetRequest = async <T>(path: string): Promise<T> => {
-  return (
-    await axios.get(
-      `${process.env.REACT_APP_YNAB_API_BASE_URI}/${path}`,
-      getConfig()
-    )
-  ).data.data;
+  return axios.get(
+    `${process.env.REACT_APP_YNAB_API_BASE_URI}/${path}`,
+    getConfig()
+  );
 };
