@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/ynabReports/static/css/main.073c9b0a.css",
+    "main.js": "/ynabReports/static/js/main.35112f16.js",
+    "static/js/787.1e87805c.chunk.js": "/ynabReports/static/js/787.1e87805c.chunk.js",
+    "index.html": "/ynabReports/index.html",
+    "main.073c9b0a.css.map": "/ynabReports/static/css/main.073c9b0a.css.map",
+    "main.35112f16.js.map": "/ynabReports/static/js/main.35112f16.js.map",
+    "787.1e87805c.chunk.js.map": "/ynabReports/static/js/787.1e87805c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.35112f16.js"
+  ]
+}
