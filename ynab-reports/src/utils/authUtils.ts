@@ -21,7 +21,7 @@ export const removeHashParamsFromUrl = () => {
 
 const AUTH_TOKEN_STORAGE_KEY = "AUTH_TOKEN_STORAGE_KEY";
 const AUTH_TOKEN_URL_PARAM = "access_token";
-const EXPIRES_IN_URL_PARAM = "expires_in";
+//const EXPIRES_IN_URL_PARAM = "expires_in";
 
 export const readUrlParamsAndSetAuthTokenToStorage = () => {
   const params = getHashParams();

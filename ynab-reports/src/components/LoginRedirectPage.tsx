@@ -1,8 +1,9 @@
 import { readUrlParamsAndSetAuthTokenToStorage } from "../utils/authUtils";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { observer } from "mobx-react";
 
-export const LoginRedirectPage = () => {
+export const LoginRedirectPage = observer(() => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -11,4 +12,4 @@ export const LoginRedirectPage = () => {
   });
 
   return <div>SOMETHING WENT WRONG LOGGING YOU IN</div>;
-};
+});
