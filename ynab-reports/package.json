@@ -2,6 +2,7 @@
   "name": "ynab-reports",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lyon-tonic.github.io/ynabReports",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@blueprintjs/core": "^4.13.0",
@@ -70,7 +71,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -140,5 +143,8 @@
       "jest-watch-typeahead/testname"
     ],
     "resetMocks": true
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
