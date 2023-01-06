@@ -1,5 +1,4 @@
 import { Button } from "@blueprintjs/core";
-import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { RootStore } from "../stores/rootStore";
@@ -8,7 +7,7 @@ interface IProps {
   rootStore: RootStore;
 }
 
-export const LoginPage = observer(({ rootStore }: IProps) => {
+export const LoginPage = ({ rootStore }: IProps) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,4 +29,4 @@ export const LoginPage = observer(({ rootStore }: IProps) => {
       <Button text={"Login to YNAB"} onClick={handleLogin} />
     </div>
   );
-});
+};

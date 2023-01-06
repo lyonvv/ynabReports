@@ -1,5 +1,4 @@
 import { Button } from "@blueprintjs/core";
-import { observer } from "mobx-react";
 import { RootStore } from "../stores/rootStore";
 import { getAuthToken } from "../utils/authUtils";
 
@@ -7,7 +6,7 @@ interface IProps {
   rootStore: RootStore;
 }
 
-export const HomePage = observer(({ rootStore }: IProps) => {
+export const HomePage = ({ rootStore }: IProps) => {
   const authToken = getAuthToken();
 
   return (
@@ -15,11 +14,6 @@ export const HomePage = observer(({ rootStore }: IProps) => {
       HOME PAGE
       <Button text={"LOGOUT"} onClick={() => rootStore.authStore.logOut()} />
       <div>{"Auth Token: " + authToken}</div>
-      <Button
-        text={"Fetch User Info"}
-        onClick={() => rootStore.userStore.fetchUser()}
-      />
-      <div>{rootStore.userStore.user?.id}</div>
     </div>
   );
-});
+};
