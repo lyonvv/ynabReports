@@ -1,9 +1,9 @@
-import { AccountTypeApi } from "./Enums/AccountTypeEnumApi";
+import { AccountTypeEnumApi } from "./Enums/AccountTypeEnumApi";
 
 export interface IAccountApiModel {
   id: string;
   name: string;
-  type: AccountTypeApi;
+  type: AccountTypeEnumApi;
   on_budget: boolean;
   closed: boolean;
   note?: string;

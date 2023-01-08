@@ -1,4 +1,4 @@
-export enum AccountTypeApi {
+export enum AccountTypeEnumApi {
   "checking",
   "savings",
   "cash",

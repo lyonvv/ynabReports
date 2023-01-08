@@ -1,0 +1,16 @@
+export enum AccountTypeEnum {
+  Unknown,
+  Checking,
+  Savings,
+  Cash,
+  CreditCard,
+  LineOfCredit,
+  OtherAsset,
+  OtherLiability,
+  Mortgage,
+  AutoLoan,
+  StudentLoan,
+  PersonalLoan,
+  MedicalDebt,
+  OtherDebt,
+}

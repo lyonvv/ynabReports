@@ -11,8 +11,15 @@ export const transactionSummaryApiToClient = (
     amount: transactionSummaryApi.amount,
     cleared: clearedStateEnumApiToClient(transactionSummaryApi.cleared),
     date: dayjs(transactionSummaryApi.date).toDate(),
-    deleted: transactionSummaryApi.deleted,
+    isDeleted: transactionSummaryApi.deleted,
     memo: transactionSummaryApi.memo,
     approved: transactionSummaryApi.approved,
+    accountId: transactionSummaryApi.account_id,
+    payeeId: transactionSummaryApi.payee_id,
+    categoryId: transactionSummaryApi.category_id,
+    transferAccountId: transactionSummaryApi.transfer_account_id,
+    transferTransactionId: transactionSummaryApi.transfer_transaction_id,
+    matchedTransactionId: transactionSummaryApi.matched_transaction_id,
+    importId: transactionSummaryApi.import_id,
   };
 };

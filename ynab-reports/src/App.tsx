@@ -33,10 +33,7 @@ const getComponentFromPath = () => {
           path={"/transactions"}
           element={
             <LoggedInGuard rootStore={rootStore}>
-              <TransactionsPage
-                transactionStore={rootStore.transactionStore}
-                budgetStore={rootStore.budgetStore}
-              />
+              <TransactionsPage rootStore={rootStore} />
             </LoggedInGuard>
           }
         />

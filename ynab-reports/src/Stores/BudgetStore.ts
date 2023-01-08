@@ -16,7 +16,7 @@ export class BudgetStore {
 
   public errorMessage?: any;
   public isLoading: boolean = false;
-  public budgets: IBudgetSummaryModel[] = [];
+  public budgets: { [id: string]: IBudgetSummaryModel } = {};
   public selectedBudget?: IBudgetSummaryModel;
 
   public fetchAllBudgets = flow(function* (this: BudgetStore) {
@@ -24,9 +24,10 @@ export class BudgetStore {
     try {
       const response: IBudgetSummaryApiResponseModel =
         yield makeGetRequest<IBudgetSummaryApiResponseModel>("budgets");
-      this.budgets = response.budgets.map((budgetApi) =>
-        budgetSummaryApiToClient(budgetApi)
-      );
+      this.budgets = response.budgets.reduce((result, budgetApi) => {
+        result[budgetApi.id] = budgetSummaryApiToClient(budgetApi);
+        return result;
+      }, {} as { [id: string]: IBudgetSummaryModel });
       this.selectedBudget = budgetSummaryApiToClient(response.default_budget);
     } catch (error: any) {
       this.errorMessage = error;

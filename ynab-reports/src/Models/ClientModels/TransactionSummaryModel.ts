@@ -7,5 +7,12 @@ export interface ITransactionSummaryModel {
   memo: string;
   cleared: ClearedStateEnum;
   approved: boolean;
-  deleted: boolean;
+  isDeleted: boolean;
+  accountId: string;
+  payeeId: string;
+  categoryId: string;
+  transferAccountId: string;
+  transferTransactionId: string;
+  matchedTransactionId: string;
+  importId: string;
 }
