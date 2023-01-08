@@ -1,0 +1,15 @@
+export enum AccountTypeApi {
+  "checking",
+  "savings",
+  "cash",
+  "creditCard",
+  "lineOfCredit",
+  "otherAsset",
+  "otherLiability",
+  "mortgage",
+  "autoLoan",
+  "studentLoan",
+  "personalLoan",
+  "medicalDebt",
+  "otherDebt",
+}
