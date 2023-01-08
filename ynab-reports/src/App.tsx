@@ -32,10 +32,12 @@ const getComponentFromPath = () => {
         <Route
           path={"/transactions"}
           element={
-            <TransactionsPage
-              transactionStore={rootStore.transactionStore}
-              budgetStore={rootStore.budgetStore}
-            />
+            <LoggedInGuard rootStore={rootStore}>
+              <TransactionsPage
+                transactionStore={rootStore.transactionStore}
+                budgetStore={rootStore.budgetStore}
+              />
+            </LoggedInGuard>
           }
         />
         <Route path="*" element={<NotFoundPage />} />
