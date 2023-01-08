@@ -1,7 +1,7 @@
 import { action, observable, makeAutoObservable, flow } from "mobx";
 import { IUserAPIResponse } from "../models/ApiResponseModels/UserApiResponse";
 import { IUser } from "../models/ClientModels/UserModel";
-import { userApiToClient } from "../Transformers/UserTransformer";
+import { userApiToClient } from "../transformers/UserTransformer";
 import { makeGetRequest } from "../Utils/HttpUtils";
 
 export class UserStore {
