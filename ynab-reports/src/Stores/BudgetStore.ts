@@ -1,7 +1,7 @@
 import { flow, makeAutoObservable, observable, action } from "mobx";
 import { IBudgetSummaryApiResponseModel } from "../models/ApiResponseModels/BudgetSummaryApiResponse";
 import { IBudgetSummaryModel } from "../models/ClientModels/BudgetSummaryModel";
-import { budgetSummaryApiToClient } from "../transformers/BudgetSummaryTransformer";
+import { budgetSummaryApiToClient } from "../Transformers/BudgetSummaryTransformer";
 import { makeGetRequest } from "../Utils/HttpUtils";
 
 export class BudgetStore {
