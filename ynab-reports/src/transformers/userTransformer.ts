@@ -1,10 +1,6 @@
-import { IUserAPI } from "../models/apiModels/IUserApi";
-import { IUser } from "../models/user";
+import { IUserAPIModel } from "../models/ApiModels/UserApiModel";
+import { IUser } from "../models/ClientModels/UserModel";
 
-export const userApiToClient = (userApi: IUserAPI): IUser => {
+export const userApiToClient = (userApi: IUserAPIModel): IUser => {
   return { id: userApi.id };
-};
-
-export const userClientToApi = (user: IUser): IUserAPI => {
-  return { id: user.id };
 };

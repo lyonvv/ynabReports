@@ -2,7 +2,7 @@ import { Button } from "@blueprintjs/core";
 import { observer } from "mobx-react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { RootStore } from "../stores/rootStore";
+import { RootStore } from "../Stores/RootStore";
 
 interface IProps {
   rootStore: RootStore;

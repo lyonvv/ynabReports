@@ -1,12 +1,14 @@
-import { IUserAPI } from "../models/apiModels/IUserApi";
-import { IUser } from "../models/user";
-import { userClientToApi } from "./userTransformer";
+import { IUserAPIModel } from "../models/ApiModels/UserApiModel";
+import { IUserAPIResponse } from "../models/ApiResponseModels/UserApiResponse";
+import { IUser } from "../models/ClientModels/UserModel";
+import { userApiToClient } from "./UserTransformer";
 
-test("confirms client to api user model transformation", () => {
-  const clientUser: IUser = { id: "sampleId" };
-  const expectedUserApi: IUserAPI = { id: "sampleId" };
+test("confirms api to client user model transformation", () => {
+  const userId = "sampleId";
+  const userApi: IUserAPIModel = { id: userId };
+  const expectedClientUser: IUser = { id: userId };
 
-  const transformedUserApi = userClientToApi(clientUser);
+  const transformedUserClient = userApiToClient(userApi);
 
-  expect(transformedUserApi.id).toEqual(expectedUserApi.id);
+  expect(transformedUserClient.id).toEqual(expectedClientUser.id);
 });

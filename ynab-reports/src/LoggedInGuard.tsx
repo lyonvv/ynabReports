@@ -1,5 +1,5 @@
-import { LoginPage } from "./components/LoginPage";
-import { RootStore } from "./stores/rootStore";
+import { LoginPage } from "./Components/LoginPage";
+import { RootStore } from "./Stores/RootStore";
 
 interface IProps {
   rootStore: RootStore;

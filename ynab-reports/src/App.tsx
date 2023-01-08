@@ -1,11 +1,13 @@
 import "./App.css";
-import { LoginPage } from "./components/LoginPage";
-import { RootStore } from "./stores/rootStore";
+import { LoginPage } from "./Components/LoginPage";
+import { RootStore } from "./Stores/RootStore";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { LoggedInGuard } from "./LoggedInGuard";
-import { HomePage } from "./components/HomePage";
-import { LoginRedirectPage } from "./components/LoginRedirectPage";
+import { HomePage } from "./Components/HomePage";
+import { LoginRedirectPage } from "./Components/LoginRedirectPage";
 import { observer } from "mobx-react";
+import { NotFoundPage } from "./Components/NotFoundPage";
+import { TransactionsPage } from "./Components/TransactionsPage";
 
 const rootStore = new RootStore();
 
@@ -27,6 +29,16 @@ const getComponentFromPath = () => {
         />
         <Route path={"/login"} element={<LoginPage rootStore={rootStore} />} />
         <Route path={"/login_redirect"} element={<LoginRedirectPage />} />
+        <Route
+          path={"/transactions"}
+          element={
+            <TransactionsPage
+              transactionStore={rootStore.transactionStore}
+              budgetStore={rootStore.budgetStore}
+            />
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

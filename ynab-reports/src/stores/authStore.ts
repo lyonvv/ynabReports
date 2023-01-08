@@ -1,5 +1,5 @@
-import { clearAuthTokenFromStorage, getAuthToken } from "../utils/authUtils";
-import { RootStore } from "./rootStore";
+import { clearAuthTokenFromStorage, getAuthToken } from "../Utils/AuthUtils";
+import { RootStore } from "./RootStore";
 
 export class AuthStore {
   public constructor(private rootStore: RootStore) {}

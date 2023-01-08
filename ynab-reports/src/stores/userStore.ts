@@ -1,8 +1,8 @@
 import { action, observable, makeAutoObservable, flow } from "mobx";
-import { IUserAPI } from "../models/apiModels/IUserApi";
-import { IUser } from "../models/user";
-import { userApiToClient } from "../transformers/userTransformer";
-import { makeGetRequest } from "../utils/httpUtils";
+import { IUserAPIResponse } from "../models/ApiResponseModels/UserApiResponse";
+import { IUser } from "../models/ClientModels/UserModel";
+import { userApiToClient } from "../Transformers/UserTransformer";
+import { makeGetRequest } from "../Utils/HttpUtils";
 
 export class UserStore {
   public constructor() {
@@ -14,15 +14,17 @@ export class UserStore {
     });
   }
 
-  errorMessage?: any;
-  isLoading: boolean = false;
-  user?: IUser;
+  public errorMessage?: any;
+  public isLoading: boolean = false;
+  public user?: IUser;
 
-  fetchUser = flow(function* (this: UserStore) {
+  public fetchUser = flow(function* (this: UserStore) {
     this.isLoading = true;
     try {
-      const response: IUserAPI = yield makeGetRequest<IUserAPI>("user");
-      this.user = userApiToClient(response);
+      const response: IUserAPIResponse = yield makeGetRequest<IUserAPIResponse>(
+        "user"
+      );
+      this.user = userApiToClient(response.user);
     } catch (error: any) {
       this.errorMessage = error;
     } finally {
