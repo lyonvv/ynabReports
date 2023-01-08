@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import { IApiResponse } from "../models/ApiModels/ApiResponse";
+import { IApiResponse } from "../Models/ApiModels/ApiResponse";
 import { getAuthToken } from "./AuthUtils";
 
 const getConfig = () => {
