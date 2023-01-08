@@ -26,7 +26,7 @@ export const HomePage = observer(({ rootStore }: IProps) => {
       <Button text={"LOGOUT"} onClick={() => rootStore.authStore.logOut()} />
       <div>{"Auth Token: " + authToken}</div>
       <UserInfo userId={rootStore.userStore.user?.id} />
-      <div>{`${rootStore.budgetStore.budgets?.length} Budgets Loaded`}</div>
+      <div>{`${rootStore.budgetStore.budgets?.size} Budgets Loaded`}</div>
       <div>
         <Button
           text={"View Transactions"}

@@ -1,16 +1,16 @@
 import { observer } from "mobx-react";
-import { ITransactionSummaryModel } from "../Models/ClientModels/TransactionSummaryModel";
+import { ITransactionDetailModel } from "../Models/ClientModels/TransactionDetailModel";
 import { TransactionsListItem } from "./TransactionListItem";
 
 interface IProps {
-  transactions: ITransactionSummaryModel[];
+  transactionDetails: Map<string, ITransactionDetailModel>;
 }
 
-export const TransactionsList = observer(({ transactions }: IProps) => {
+export const TransactionsList = observer(({ transactionDetails }: IProps) => {
   return (
     <div>
-      {transactions.map((transaction) => (
-        <TransactionsListItem transaction={transaction} />
+      {Array.from(transactionDetails.values()).map((transactionDetail) => (
+        <TransactionsListItem transaction={transactionDetail} />
       ))}
     </div>
   );

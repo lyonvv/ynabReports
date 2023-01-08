@@ -11,7 +11,10 @@ export class AccountStore {
 
   public errorMessage?: any;
   public isLoading: boolean = false;
-  public accounts: { [id: string]: IAccountModel } = {};
+  public accounts: Map<string, IAccountModel> = new Map<
+    string,
+    IAccountModel
+  >();
 
   public fetchAccountsForBudgetById = flow(function* (
     this: AccountStore,
@@ -23,9 +26,9 @@ export class AccountStore {
         `budgets/${budgetId}/accounts`
       );
       this.accounts = response.accounts.reduce((result, accountApi) => {
-        result[accountApi.id] = accountApiToClient(accountApi);
+        result.set(accountApi.id, accountApiToClient(accountApi));
         return result;
-      }, {} as { [id: string]: IAccountModel });
+      }, new Map<string, IAccountModel>());
     } catch (error: any) {
       this.errorMessage = error;
     } finally {

@@ -11,7 +11,10 @@ export class TransactionStore {
 
   public errorMessage?: any;
   public isLoading: boolean = false;
-  public transactions: { [id: string]: ITransactionSummaryModel } = {};
+  public transactions: Map<string, ITransactionSummaryModel> = new Map<
+    string,
+    ITransactionSummaryModel
+  >();
 
   public fetchTransactionsForBudgetById = flow(function* (
     this: TransactionStore,
@@ -25,11 +28,13 @@ export class TransactionStore {
         );
       this.transactions = response.transactions.reduce(
         (result, transactionApi) => {
-          result[transactionApi.id] =
-            transactionSummaryApiToClient(transactionApi);
+          result.set(
+            transactionApi.id,
+            transactionSummaryApiToClient(transactionApi)
+          );
           return result;
         },
-        {} as { [id: string]: ITransactionSummaryModel }
+        new Map<string, ITransactionSummaryModel>()
       );
     } catch (error: any) {
       this.errorMessage = error;

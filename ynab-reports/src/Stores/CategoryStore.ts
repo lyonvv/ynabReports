@@ -13,8 +13,14 @@ export class CategoryStore {
 
   public errorMessage?: any;
   public isLoading: boolean = false;
-  public categories: { [id: string]: ICategoryModel } = {};
-  public categoryGroups: { [id: string]: ICategoryGroupModel } = {};
+  public categories: Map<string, ICategoryModel> = new Map<
+    string,
+    ICategoryModel
+  >();
+  public categoryGroups: Map<string, ICategoryGroupModel> = new Map<
+    string,
+    ICategoryGroupModel
+  >();
 
   public fetchCategoriesForBudgetById = flow(function* (
     this: CategoryStore,
@@ -28,25 +34,28 @@ export class CategoryStore {
 
       const { categories, categoryGroups } = response.category_groups.reduce(
         (result, categoryGroupWithCategories) => {
-          result.categoryGroups[categoryGroupWithCategories.id] =
-            categoryGroupApiToClient(categoryGroupWithCategories);
+          result.categoryGroups.set(
+            categoryGroupWithCategories.id,
+            categoryGroupApiToClient(categoryGroupWithCategories)
+          );
 
-          result.categories = {
-            ...result.categories,
-            ...categoryGroupWithCategories.categories.reduce(
-              (result, categoryApi) => {
-                result[categoryApi.id] = categoryApiToClient(categoryApi);
-                return result;
-              },
-              {} as { [id: string]: ICategoryModel }
-            ),
-          };
+          for (
+            let i = 0;
+            i < categoryGroupWithCategories.categories.length;
+            i++
+          ) {
+            const categoryApi = categoryGroupWithCategories.categories[i];
+            result.categories.set(
+              categoryApi.id,
+              categoryApiToClient(categoryApi)
+            );
+          }
 
           return result;
         },
         {
-          categories: {} as { [id: string]: ICategoryModel },
-          categoryGroups: {} as { [id: string]: ICategoryGroupModel },
+          categories: new Map<string, ICategoryModel>(),
+          categoryGroups: new Map<string, ICategoryGroupModel>(),
         }
       );
 

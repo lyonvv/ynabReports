@@ -11,7 +11,7 @@ export class PayeeStore {
 
   public errorMessage?: any;
   public isLoading: boolean = false;
-  public payees: { [id: string]: IPayeeModel } = {};
+  public payees: Map<string, IPayeeModel> = new Map<string, IPayeeModel>();
 
   public fetchPayeesForBudgetById = flow(function* (
     this: PayeeStore,
@@ -23,9 +23,9 @@ export class PayeeStore {
         `budgets/${budgetId}/payees`
       );
       this.payees = response.payees.reduce((result, payeeApi) => {
-        result[payeeApi.id] = payeeApiToClient(payeeApi);
+        result.set(payeeApi.id, payeeApiToClient(payeeApi));
         return result;
-      }, {} as { [id: string]: IPayeeModel });
+      }, new Map<string, IPayeeModel>());
     } catch (error: any) {
       this.errorMessage = error;
     } finally {

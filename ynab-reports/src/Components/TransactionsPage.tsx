@@ -1,5 +1,6 @@
 import { observer } from "mobx-react";
 import { useMountEffect } from "../Hooks/UseMountEffectHook";
+import { ITransactionDetailModel } from "../Models/ClientModels/TransactionDetailModel";
 import { RootStore } from "../Stores/RootStore";
 import { TransactionsList } from "./TransactionsList";
 
@@ -27,12 +28,38 @@ export const TransactionsPage = observer(({ rootStore }: IProps) => {
     }
   });
 
+  const transactionDetails = Array.from(
+    rootStore.transactionStore.transactions
+  ).reduce((result, [id, transactionSummary]) => {
+    const transactionDetail: ITransactionDetailModel = {
+      ...transactionSummary,
+      account: rootStore.accountStore.accounts.get(
+        transactionSummary.accountId
+      ),
+      payee: rootStore.payeeStore.payees.get(transactionSummary.payeeId),
+      category: rootStore.categoryStore.categories.get(
+        transactionSummary.categoryId
+      ),
+      transferAccount: rootStore.accountStore.accounts.get(
+        transactionSummary.accountId
+      ),
+      transferTransaction: rootStore.transactionStore.transactions.get(
+        transactionSummary.transferTransactionId ?? ""
+      ),
+      matchedTransaction: rootStore.transactionStore.transactions.get(
+        transactionSummary.matchedTransactionId ?? ""
+      ),
+    };
+
+    result.set(id, transactionDetail);
+
+    return result;
+  }, new Map<string, ITransactionDetailModel>());
+
   return (
     <div>
-      <div>{`${rootStore.transactionStore.transactions.length} transactions loaded`}</div>
-      <TransactionsList
-        transactions={rootStore.transactionStore.transactions}
-      />
+      <div>{`${rootStore.transactionStore.transactions.size} transactions loaded`}</div>
+      <TransactionsList transactionDetails={transactionDetails} />
     </div>
   );
 });

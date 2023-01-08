@@ -11,8 +11,8 @@ export interface ITransactionSummaryModel {
   accountId: string;
   payeeId: string;
   categoryId: string;
-  transferAccountId: string;
-  transferTransactionId: string;
-  matchedTransactionId: string;
+  transferAccountId?: string;
+  transferTransactionId?: string;
+  matchedTransactionId?: string;
   importId: string;
 }
