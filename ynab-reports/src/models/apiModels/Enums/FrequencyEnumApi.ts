@@ -1,0 +1,15 @@
+export enum FrequencyEnumApi {
+  "never",
+  "daily",
+  "weekly",
+  "everyOtherWeek",
+  "twiceAMonth",
+  "every4Weeks",
+  "monthly",
+  "everyOtherMonth",
+  "every3Months",
+  "every4Months",
+  "twiceAYear",
+  "yearly",
+  "everyOtherYear",
+}
