@@ -1,7 +1,7 @@
 import { flow, makeAutoObservable } from "mobx";
 import { IListTransactionApiResponse } from "../models/ApiResponseModels/ListTransactionApiResponse";
 import { ITransactionSummaryModel } from "../models/ClientModels/TransactionSummaryModel";
-import { transactionSummaryApiToClient } from "../transformers/TransactionTranformer";
+import { transactionSummaryApiToClient } from "../Transformers/TransactionTranformer";
 import { makeGetRequest } from "../Utils/HttpUtils";
 
 export class TransactionStore {
